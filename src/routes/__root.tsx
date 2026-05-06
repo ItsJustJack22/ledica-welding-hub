@@ -7,7 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { SiteHeader, SiteFooter } from "@/components/SiteLayout";
+import { SiteHeader, SiteFooter, WhatsAppButton } from "@/components/SiteLayout";
 
 import appCss from "../styles.css?url";
 
@@ -49,10 +49,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "LE.DI.CA. Gas Tecnici Srl — Saldatura TIG MIG PLASMA Rozzano" },
-      { name: "description", content: "Forniture professionali per saldatura TIG, MIG e PLASMA. Gas tecnici e attrezzature a Rozzano (MI). Dal 1985 al servizio dei professionisti." },
-      { property: "og:title", content: "LE.DI.CA. Gas Tecnici Srl" },
-      { property: "og:description", content: "Tutto per la saldatura TIG MIG PLASMA — Rozzano (MI)" },
+      { title: "LE.DI.CA. Srl — Impianti automatici di saldatura per acciaio" },
+      { name: "description", content: "Progettiamo e costruiamo impianti di saldatura TIG, Plasma e Laser per la produzione di tubi in acciaio. Dal 1989 a Rozzano (MI)." },
+      { property: "og:title", content: "LE.DI.CA. Srl — Tube & Pipe Automatic Welding Systems" },
+      { property: "og:description", content: "Impianti automatici di saldatura per acciaio. 500+ installazioni nel mondo." },
       { property: "og:type", content: "website" },
     ],
     links: [
@@ -92,6 +92,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <SiteFooter />
+        <WhatsAppButton />
       </div>
     </QueryClientProvider>
   );

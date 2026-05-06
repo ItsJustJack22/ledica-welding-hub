@@ -9,10 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProgettiRouteImport } from './routes/progetti'
+import { Route as LavorazioniRouteImport } from './routes/lavorazioni'
+import { Route as ImpiantiRouteImport } from './routes/impianti'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as AziendaRouteImport } from './routes/azienda'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ImpiantiSlugRouteImport } from './routes/impianti.$slug'
 
+const ProgettiRoute = ProgettiRouteImport.update({
+  id: '/progetti',
+  path: '/progetti',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LavorazioniRoute = LavorazioniRouteImport.update({
+  id: '/lavorazioni',
+  path: '/lavorazioni',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpiantiRoute = ImpiantiRouteImport.update({
+  id: '/impianti',
+  path: '/impianti',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContattiRoute = ContattiRouteImport.update({
   id: '/contatti',
   path: '/contatti',
@@ -28,39 +47,102 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ImpiantiSlugRoute = ImpiantiSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ImpiantiRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/azienda': typeof AziendaRoute
   '/contatti': typeof ContattiRoute
+  '/impianti': typeof ImpiantiRouteWithChildren
+  '/lavorazioni': typeof LavorazioniRoute
+  '/progetti': typeof ProgettiRoute
+  '/impianti/$slug': typeof ImpiantiSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/azienda': typeof AziendaRoute
   '/contatti': typeof ContattiRoute
+  '/impianti': typeof ImpiantiRouteWithChildren
+  '/lavorazioni': typeof LavorazioniRoute
+  '/progetti': typeof ProgettiRoute
+  '/impianti/$slug': typeof ImpiantiSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/azienda': typeof AziendaRoute
   '/contatti': typeof ContattiRoute
+  '/impianti': typeof ImpiantiRouteWithChildren
+  '/lavorazioni': typeof LavorazioniRoute
+  '/progetti': typeof ProgettiRoute
+  '/impianti/$slug': typeof ImpiantiSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/azienda' | '/contatti'
+  fullPaths:
+    | '/'
+    | '/azienda'
+    | '/contatti'
+    | '/impianti'
+    | '/lavorazioni'
+    | '/progetti'
+    | '/impianti/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/azienda' | '/contatti'
-  id: '__root__' | '/' | '/azienda' | '/contatti'
+  to:
+    | '/'
+    | '/azienda'
+    | '/contatti'
+    | '/impianti'
+    | '/lavorazioni'
+    | '/progetti'
+    | '/impianti/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/azienda'
+    | '/contatti'
+    | '/impianti'
+    | '/lavorazioni'
+    | '/progetti'
+    | '/impianti/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AziendaRoute: typeof AziendaRoute
   ContattiRoute: typeof ContattiRoute
+  ImpiantiRoute: typeof ImpiantiRouteWithChildren
+  LavorazioniRoute: typeof LavorazioniRoute
+  ProgettiRoute: typeof ProgettiRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/progetti': {
+      id: '/progetti'
+      path: '/progetti'
+      fullPath: '/progetti'
+      preLoaderRoute: typeof ProgettiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lavorazioni': {
+      id: '/lavorazioni'
+      path: '/lavorazioni'
+      fullPath: '/lavorazioni'
+      preLoaderRoute: typeof LavorazioniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impianti': {
+      id: '/impianti'
+      path: '/impianti'
+      fullPath: '/impianti'
+      preLoaderRoute: typeof ImpiantiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contatti': {
       id: '/contatti'
       path: '/contatti'
@@ -82,13 +164,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/impianti/$slug': {
+      id: '/impianti/$slug'
+      path: '/$slug'
+      fullPath: '/impianti/$slug'
+      preLoaderRoute: typeof ImpiantiSlugRouteImport
+      parentRoute: typeof ImpiantiRoute
+    }
   }
 }
+
+interface ImpiantiRouteChildren {
+  ImpiantiSlugRoute: typeof ImpiantiSlugRoute
+}
+
+const ImpiantiRouteChildren: ImpiantiRouteChildren = {
+  ImpiantiSlugRoute: ImpiantiSlugRoute,
+}
+
+const ImpiantiRouteWithChildren = ImpiantiRoute._addFileChildren(
+  ImpiantiRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AziendaRoute: AziendaRoute,
   ContattiRoute: ContattiRoute,
+  ImpiantiRoute: ImpiantiRouteWithChildren,
+  LavorazioniRoute: LavorazioniRoute,
+  ProgettiRoute: ProgettiRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
