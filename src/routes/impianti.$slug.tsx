@@ -164,7 +164,7 @@ export const Route = createFileRoute("/impianti/$slug")({
 });
 
 function ImpiantoDetail() {
-  const { item } = Route.useLoaderData();
+  const { item } = Route.useLoaderData() as { item: Impianto };
   const schedaSubject = `Richiesta scheda tecnica — ${item.title}`;
   return (
     <>
