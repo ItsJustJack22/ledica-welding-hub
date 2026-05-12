@@ -2,7 +2,8 @@ import { createServerFn } from "@tanstack/react-start";
 
 const GATEWAY_URL = "https://connector-gateway.lovable.dev/storyblok";
 
-export type StoryblokStory<T = Record<string, unknown>> = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type StoryblokStory<T = Record<string, any>> = {
   id: number;
   uuid: string;
   name: string;
