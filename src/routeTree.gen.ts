@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgettiRouteImport } from './routes/progetti'
 import { Route as LavorazioniRouteImport } from './routes/lavorazioni'
 import { Route as ImpiantiRouteImport } from './routes/impianti'
@@ -17,6 +18,11 @@ import { Route as AziendaRouteImport } from './routes/azienda'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ImpiantiSlugRouteImport } from './routes/impianti.$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgettiRoute = ProgettiRouteImport.update({
   id: '/progetti',
   path: '/progetti',
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/impianti': typeof ImpiantiRouteWithChildren
   '/lavorazioni': typeof LavorazioniRoute
   '/progetti': typeof ProgettiRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/impianti/$slug': typeof ImpiantiSlugRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/impianti': typeof ImpiantiRouteWithChildren
   '/lavorazioni': typeof LavorazioniRoute
   '/progetti': typeof ProgettiRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/impianti/$slug': typeof ImpiantiSlugRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/impianti': typeof ImpiantiRouteWithChildren
   '/lavorazioni': typeof LavorazioniRoute
   '/progetti': typeof ProgettiRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/impianti/$slug': typeof ImpiantiSlugRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/impianti'
     | '/lavorazioni'
     | '/progetti'
+    | '/sitemap.xml'
     | '/impianti/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/impianti'
     | '/lavorazioni'
     | '/progetti'
+    | '/sitemap.xml'
     | '/impianti/$slug'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/impianti'
     | '/lavorazioni'
     | '/progetti'
+    | '/sitemap.xml'
     | '/impianti/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -118,10 +130,18 @@ export interface RootRouteChildren {
   ImpiantiRoute: typeof ImpiantiRouteWithChildren
   LavorazioniRoute: typeof LavorazioniRoute
   ProgettiRoute: typeof ProgettiRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/progetti': {
       id: '/progetti'
       path: '/progetti'
@@ -193,7 +213,18 @@ const rootRouteChildren: RootRouteChildren = {
   ImpiantiRoute: ImpiantiRouteWithChildren,
   LavorazioniRoute: LavorazioniRoute,
   ProgettiRoute: ProgettiRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
