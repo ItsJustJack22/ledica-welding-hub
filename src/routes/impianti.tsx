@@ -8,7 +8,9 @@ export const Route = createFileRoute("/impianti")({
       { name: "description", content: "Impianti automatici di saldatura TIG, Plasma, Laser per tubi in acciaio. Cofani di comando, torce multicatodo, accessori." },
       { property: "og:title", content: "Impianti di saldatura — LE.DI.CA." },
       { property: "og:description", content: "TIG, Plasma, Laser: la gamma completa di impianti automatici LE.DI.CA." },
+      { property: "og:url", content: "https://ledica-sparkle-site.lovable.app/impianti" },
     ],
+    links: [{ rel: "canonical", href: "https://ledica-sparkle-site.lovable.app/impianti" }],
   }),
   component: ImpiantiLayout,
 });

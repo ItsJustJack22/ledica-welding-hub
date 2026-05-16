@@ -8,7 +8,9 @@ export const Route = createFileRoute("/lavorazioni")({
       { name: "description", content: "Progettazione, costruzione, installazione e assistenza di impianti di saldatura per acciaio. Servizio completo dal concept al post-vendita." },
       { property: "og:title", content: "Lavorazioni — LE.DI.CA." },
       { property: "og:description", content: "Dalla progettazione al service: il ciclo completo di lavorazione LE.DI.CA." },
+      { property: "og:url", content: "https://ledica-sparkle-site.lovable.app/lavorazioni" },
     ],
+    links: [{ rel: "canonical", href: "https://ledica-sparkle-site.lovable.app/lavorazioni" }],
   }),
   component: Lavorazioni,
 });

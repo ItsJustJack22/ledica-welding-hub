@@ -8,12 +8,17 @@ import progettiImg from "@/assets/progetti-tubi.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "LE.DI.CA. Srl — Impianti automatici di saldatura per acciaio" },
-      { name: "description", content: "Progettiamo e realizziamo impianti di saldatura TIG, Plasma e Laser per la produzione di tubi in acciaio. Oltre 500 impianti installati nel mondo dal 1989." },
+      { title: "LE.DI.CA. — Impianti saldatura tubi acciaio" },
+      { name: "description", content: "Progettiamo impianti di saldatura TIG, Plasma e Laser per tubi in acciaio. 500+ installazioni nel mondo dal 1989." },
       { property: "og:title", content: "LE.DI.CA. Srl — Tube & Pipe Automatic Welding Systems" },
       { property: "og:description", content: "Impianti di saldatura automatica per acciaio. 500+ installazioni nel mondo." },
       { property: "og:image", content: heroImg },
+      { property: "og:url", content: "https://ledica-sparkle-site.lovable.app/" },
       { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://ledica-sparkle-site.lovable.app/" },
+      { rel: "preload", as: "image", href: heroImg, fetchpriority: "high" },
     ],
   }),
   component: Home,
@@ -25,7 +30,7 @@ function Home() {
       {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="Impianto di saldatura automatica per tubi" width={1920} height={1280} className="h-full w-full object-cover opacity-50" />
+          <img src={heroImg} alt="Impianto di saldatura automatica per tubi" width={1920} height={1280} fetchPriority="high" decoding="async" className="h-full w-full object-cover opacity-50" />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
           <div className="absolute inset-0 grid-bg opacity-30" />
         </div>
