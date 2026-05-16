@@ -14,7 +14,9 @@ export const Route = createFileRoute("/progetti")({
       { property: "og:title", content: "Progetti — LE.DI.CA." },
       { property: "og:description", content: "I nostri impianti al lavoro nelle più importanti acciaierie del mondo." },
       { property: "og:image", content: progettiImg },
+      { property: "og:url", content: "https://ledica-sparkle-site.lovable.app/progetti" },
     ],
+    links: [{ rel: "canonical", href: "https://ledica-sparkle-site.lovable.app/progetti" }],
   }),
   component: Progetti,
 });

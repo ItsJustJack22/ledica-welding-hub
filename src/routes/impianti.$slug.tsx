@@ -136,8 +136,9 @@ export const Route = createFileRoute("/impianti/$slug")({
     }
     return { item: mergeWithCms(base, cms), slug: params.slug };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     if (!loaderData) return { meta: [] };
+    const url = `https://ledica-sparkle-site.lovable.app/impianti/${params.slug}`;
     return {
       meta: [
         { title: `${loaderData.item.title} — Impianti LE.DI.CA.` },
@@ -145,6 +146,23 @@ export const Route = createFileRoute("/impianti/$slug")({
         { property: "og:title", content: `${loaderData.item.title} — LE.DI.CA.` },
         { property: "og:description", content: loaderData.item.tagline },
         { property: "og:image", content: loaderData.item.image },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "product" },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: loaderData.item.title,
+            description: loaderData.item.tagline,
+            image: loaderData.item.image,
+            brand: { "@type": "Brand", name: "LE.DI.CA. Srl" },
+            url,
+          }),
+        },
       ],
     };
   },

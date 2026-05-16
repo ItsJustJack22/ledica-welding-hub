@@ -9,7 +9,9 @@ export const Route = createFileRoute("/azienda")({
       { name: "description", content: "LE.DI.CA. Srl: dal 1989 progettiamo impianti di saldatura automatica per tubi in acciaio. Oltre 500 installazioni nel mondo." },
       { property: "og:title", content: "Azienda — LE.DI.CA. Srl" },
       { property: "og:description", content: "La storia di LE.DI.CA., punto di riferimento mondiale per la saldatura automatica di tubi in acciaio." },
+      { property: "og:url", content: "https://ledica-sparkle-site.lovable.app/azienda" },
     ],
+    links: [{ rel: "canonical", href: "https://ledica-sparkle-site.lovable.app/azienda" }],
   }),
   component: Azienda,
 });

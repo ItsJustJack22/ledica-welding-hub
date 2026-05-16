@@ -1,0 +1,21 @@
+# LE.DI.CA. Srl
+
+> Costruttore italiano di impianti automatici di saldatura TIG, Plasma e Laser per la produzione di tubi in acciaio. Con sede a Rozzano (MI), attivo dal 1989, con oltre 500 impianti installati in più di 30 paesi.
+
+## Pages
+
+- [Home](/): Panoramica dell'azienda, tecnologie e settori serviti.
+- [Azienda](/azienda): Storia, valori e numeri di LE.DI.CA. dal 1989.
+- [Impianti](/impianti): Gamma completa di impianti TIG, Plasma, Laser, sistemi multicatodo, cofani e accessori.
+- [Lavorazioni](/lavorazioni): Processo end-to-end dalla progettazione all'assistenza post-vendita.
+- [Progetti](/progetti): Impianti realizzati per Outokumpu, Marcegaglia, ThyssenKrupp e altri.
+- [Contatti](/contatti): Sede, telefono, email e form preventivo.
+
+## Impianti
+
+- [TIG](/impianti/tig): Saldatura TIG mono e multicatodo per acciai inox e leghe speciali.
+- [Plasma + TIG](/impianti/plasma): Sistemi combinati ad alta penetrazione per spessori importanti.
+- [Laser Fibra](/impianti/laser): Saldatrice laser fibra con filo continuo.
+- [Sistemi Tricatodo](/impianti/tricatodo): Torce STX e configurazioni TIG-Plasma-TIG.
+- [Cofani di Comando](/impianti/cofani): Cofani combo PPT-TTT per impianti multicatodo.
+- [Accessori & Slitte](/impianti/accessori): Slitte 3 assi, miscelatori gas, oscillatori d'arco.
