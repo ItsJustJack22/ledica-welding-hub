@@ -56,7 +56,7 @@ function ImpiantiIndex() {
               0{i + 1}
             </div>
             <s.icon className="mt-6 h-10 w-10 text-accent" strokeWidth={1.5} />
-            <h3 className="mt-6 font-display text-2xl">{s.title}</h3>
+            <h2 className="mt-6 font-display text-2xl">{s.title}</h2>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.short}</p>
             <div className="mt-6 inline-flex items-center gap-2 text-xs font-display tracking-widest text-primary">
               Approfondisci <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />

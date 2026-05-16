@@ -56,7 +56,7 @@ function Progetti() {
               </div>
               <div className="p-6">
                 <div className="text-xs font-display tracking-widest text-accent">{p.cat}</div>
-                <h3 className="mt-2 font-display text-lg leading-tight">{p.title}</h3>
+                <h2 className="mt-2 font-display text-lg leading-tight">{p.title}</h2>
               </div>
             </article>
           ))}

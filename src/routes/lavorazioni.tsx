@@ -45,7 +45,7 @@ function Lavorazioni() {
                 <f.icon className="h-10 w-10 text-accent" strokeWidth={1.5} />
                 <span className="font-display text-xs tracking-widest text-muted-foreground">FASE 0{i + 1}</span>
               </div>
-              <h3 className="mt-6 font-display text-2xl">{f.title}</h3>
+              <h2 className="mt-6 font-display text-2xl">{f.title}</h2>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{f.text}</p>
             </div>
           ))}
